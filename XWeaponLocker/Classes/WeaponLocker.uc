@@ -178,17 +178,12 @@ simulated function PostBeginPlay()
 	{
 		if (Mutator.isA('NWReplacer'))
 			bNW3hack = true;
+		if (Mutator.isA('WLInfo'))
+			NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "NN_";
 		if (Mutator.isA('ST_Mutator') && NewNetPrefix == "")
 			NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "ST_";
-		if (Mutator.isA('UN_Mutator'))
-			NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "NN_";
 		if (Mutator.isA('NewNetServer'))			
-		{
-			if (Mutator.GetPropertyText("UNM") != "")
-				NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "NN_";
-			else
-				NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "ST_";
-		}
+			NewNetPrefix = Mutator.Class.Outer.Name $ "." $ "ST_";
 	}
 	if (NewNetPrefix != "")
 		for (i=0; i<ArrayCount(Weapons); i++)
